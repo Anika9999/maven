@@ -1,16 +1,3 @@
-mvn compile --> Build Tool
-mvn pmd:pmd --> Report 
-mvn test --> Build Tool
-mvn coverage:coverage ---> Report
-mvn package --> Build Tool
-
-pom.xml 20 23--> 
-target
-src --> main,test
-
-
-
-
 pipeline{
 
 tools{	maven 'MAVEN'
