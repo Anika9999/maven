@@ -1,0 +1,58 @@
+mvn compile --> Build Tool
+mvn pmd:pmd --> Report 
+mvn test --> Build Tool
+mvn coverage:coverage ---> Report
+mvn package --> Build Tool
+
+pom.xml 20 23--> 
+target
+src --> main,test
+
+
+
+
+pipeline{
+
+tools{	maven 'MAVEN'
+	jdk 'JAVA'
+     }
+
+agent any
+		
+
+stages{
+	stage('copy git'){
+
+		steps{
+			git 'https://github.com/Anika9999/maven.git'
+		}
+	}
+	stage('compile'){
+				steps{
+					sh 'mvn compile'
+				}	
+		}
+	stage('unit test')
+			{
+				steps{
+					sh 'mvn test'
+					}
+				post{
+					success{
+							sh 'echo "ping"'
+						}
+					}	
+			}
+	stage('package'){
+				steps{
+					sh 'mvn package'
+					
+					}
+				post{
+					success{
+							sh 'echo "Success"'
+						}
+					}
+			}
+}
+			
